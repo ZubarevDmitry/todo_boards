@@ -1,32 +1,108 @@
-.App {
-  text-align: center;
+* {
+    box-sizing: border-box;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+body {
+    font-family: Helvetica Neue, Arial, Helvetica, sans-serif;
+    font-size: 14px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+input, textarea {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #dfe3e6;
+    padding: 5px;
+    resize: none;
+    margin-bottom: 8px;
 }
 
-.App-link {
-  color: #61dafb;
+.btn.green {
+    background-color: #519839;
+    box-shadow: 0 1px 0 0 #3f6f21;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    line-height: 20px;
+    padding: 6px 12px;
+    text-align: center;
+    border-radius: 3px;
+    margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.todo_list {
+    white-space: nowrap;
+}
+
+.todo_list-category h2 {
+    color: #17394d;
+    margin: 0;
+    font-size: 14px;
+}
+
+.todo_list-category {
+    background-color: #dfe3e6;
+    display: inline-block;
+    vertical-align: top;
+    width: 270px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 5px;
+    white-space: normal;
+}
+
+.todo_list-category ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+    width: 100%;
+    overflow: auto;
+}
+
+
+.todo_list-item {
+    padding: 10px 30px 10px 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    width: 250px;
+    background: #fff;
+    position: relative;
+}
+
+.todo_list-item p {
+    margin: 0;
+}
+
+.todo_list-item:last-child {
+    margin-bottom: 0;
+}
+
+.todo_list-item svg {
+    opacity: 0;
+    position: absolute;
+    -webkit-transition: opacity 0.3s ease-out 0s;
+    -moz-transition: opacity 0.3s ease-out 0s;
+    -ms-transition: opacity 0.3s ease-out 0s;
+    -o-transition: opacity 0.3s ease-out 0s;
+    transition: opacity 0.3s ease-out 0s;
+    color: #17394d;
+}
+
+.todo_list-item .fa-edit {
+    right: 5px;
+    top: 5px;
+}
+
+.todo_list-item .fa-trash-alt {
+    right: 9px;
+    bottom: 5px;
+}
+
+.todo_list-item:hover svg {
+    opacity: 1;
+}
+
+.add_todo {
+    padding-right: 10px;
 }
