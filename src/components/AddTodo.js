@@ -1,11 +1,12 @@
 import React from "react";
 import {addTodo} from "../actions";
 import {connect} from "react-redux";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 let AddTodo = ({key, category_id, dispatch}) => {
     let input;
   return (
-    <li className='todo_item add_todo' key={key}>
+    <li className='todo_list-item add_todo' key={key}>
         <form onSubmit={e => {
             e.preventDefault();
 
@@ -17,7 +18,7 @@ let AddTodo = ({key, category_id, dispatch}) => {
             input.value = '';
         }}>
             <textarea rows="3" type="text" ref={node => {input = node}}/>
-            <button type='submit' className='btn green'>Add New Card</button>
+            <button type='submit' className='btn green'><FontAwesomeIcon icon='plus-square' /> Add New Card</button>
         </form>
     </li>
   );

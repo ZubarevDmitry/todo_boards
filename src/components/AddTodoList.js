@@ -1,6 +1,7 @@
 import React from "react";
 import {addCategory} from "../actions";
 import {connect} from 'react-redux';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 const AddTodoList = ({dispatch}) => {
     let input;
@@ -18,7 +19,7 @@ const AddTodoList = ({dispatch}) => {
                 input.value = '';
             }}>
                 <input type='text' ref={node => input = node}/>
-                <button type='submit' className='btn green'>Add New List</button>
+                <button type='submit' className='btn green'><FontAwesomeIcon icon='plus-square' /> Add New List</button>
             </form>
         </div>
     );

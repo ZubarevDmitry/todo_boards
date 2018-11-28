@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import Todo from './Todo';
 import AddTodo from "./AddTodo";
 import AddTodoList from "./AddTodoList";
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const TodoList = ({todos}) => {
     let todosCategories = todos.map(cat => {
@@ -20,8 +20,7 @@ const TodoList = ({todos}) => {
                     }
                     <AddTodo key={cat.items.length} category_id={cat.category_id}/>
                 </ul>
-                {/*<FontAwesomeIcon icon='edit' size="lg"  />*/}
-                {/*<FontAwesomeIcon icon='trash-alt'size="lg"  />*/}
+                <FontAwesomeIcon icon='ellipsis-h' size="lg"  />
             </div>
         )
     })
