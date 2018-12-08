@@ -30,6 +30,9 @@ input, textarea {
     border-radius: 3px;
     margin: 0;
 }
+.btn.small {
+    padding: 2px 6px;
+}
 
 .todo_list {
     white-space: nowrap;

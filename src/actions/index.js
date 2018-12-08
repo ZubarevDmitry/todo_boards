@@ -4,7 +4,7 @@ export function addTodo(text, category_id) {
     return {type: ADD_TODO, text, category_id}
 };
 
-export function editTodo(id, text) {
+export function editTodo(id, text, category_id) {
     return {type: EDIT_TODO, id, text}
 }
 

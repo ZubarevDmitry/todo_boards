@@ -1,28 +1,27 @@
 import React from "react";
 import propTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import TodoMenu from './TodoMenu';
+import EditTodo from './EditTodo';
 
 class Todo extends React.Component{
     constructor(props) {
         super(props);
 
         this.state = {
-            menuOpened: false
+            edit_view: false
         }
     }
-    onClick = () => {
-       this.setState({menuOpened: !this.state.menuOpened})
+    onEditClick = () => {
+       this.setState({edit_view: !this.state.edit_view})
     }
     render(){
-        const {text, id} = this.props;
-        const {menuOpened} = this.state;
+        const {text, id, category_id} = this.props;
+        const {edit_view} = this.state;
 
         return (
-            <li className={'todo_list-item' + (menuOpened ? ' expanded' : '')}>
-                <p>{text}</p>
-                <FontAwesomeIcon icon='edit' onClick={this.onClick}  />
-                {menuOpened && <TodoMenu id={id} text={text} />}
+            <li className={'todo_list-item' + (edit_view ? ' expanded' : '')}>
+                <p>{!edit_view && text || edit_view && <EditTodo id={id} text={text} category_id={category_id} afterSave={this.onEditClick}/>}</p>
+                <FontAwesomeIcon icon='edit' onClick={this.onEditClick}  />
             </li>
         );
     }

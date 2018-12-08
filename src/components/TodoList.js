@@ -14,7 +14,7 @@ const TodoList = ({todos}) => {
                     {
                         cat.items.length ?
                             cat.items.map(todo => {
-                                return <Todo key={todo.id} {...todo} />
+                                return <Todo key={todo.id} {...todo} category_id={cat.category_id}/>
                             })
                             : ''
                     }

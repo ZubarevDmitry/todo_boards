@@ -4,51 +4,52 @@ import App from './App';
 import {createStore} from "redux";
 import todoReducer from './reducers';
 import {Provider} from 'react-redux';
+import uuid from 'uuid';
 
 let store = createStore(todoReducer, {
     todos: [
         {
-            category_id: 0,
+            category_id: uuid.v4(),
             title: 'To Do',
             items: [
                 {
-                    id: 0,
+                    id: uuid.v4(),
                     text: 'Buy a ticket to the concert'
                 },
                 {
-                    id: 1,
+                    id: uuid.v4(),
                     text: 'Cook a pie'
                 },
                 {
-                    id: 2,
+                    id: uuid.v4(),
                     text: 'Go to shopping with wife'
                 }
             ]
         },
         {
-            category_id: 1,
+            category_id: uuid.v4(),
             title: 'Important notes',
             items: [
                 {
-                    id: 0,
+                    id: uuid.v4(),
                     text: 'Do some important task'
                 },
                 {
-                    id: 1,
+                    id: uuid.v4(),
                     text: 'And another important task'
                 }
             ]
         },
         {
-            category_id: 2,
+            category_id: uuid.v4(),
             title: 'To learn',
             items: [
                 {
-                    id: 0,
+                    id: uuid.v4(),
                     text: 'Redux'
                 },
                 {
-                    id: 1,
+                    id: uuid.v4(),
                     text: 'HOOKs'
                 }
             ]
