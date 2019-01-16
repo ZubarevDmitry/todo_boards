@@ -59,3 +59,7 @@ let store = createStore(todoReducer, {
 
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
+
+if(module.hot) {
+    module.hot.accept();
+}

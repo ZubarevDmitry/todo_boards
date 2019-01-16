@@ -1,36 +1,24 @@
 import React from "react";
 import propTypes from 'prop-types';
-import Todo from './Todo';
-import AddTodo from "./AddTodo";
+import TodoListItem from './TodoListItem';
 import AddTodoList from "./AddTodoList";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const TodoList = ({todos}) => {
-    let todosCategories = todos.map(cat => {
+class TodoList extends React.Component{
+    render(){
+        const {todos} = this.props;
+
+        let todosCategories = todos.map(cat => {
+            return <TodoListItem cat={cat} key={cat.category_id}/>
+        })
         return (
-            <div className='todo_list-category' key={cat.category_id}>
-                <h2>{cat.title}</h2>
-                <ul>
-                    {
-                        cat.items.length ?
-                            cat.items.map(todo => {
-                                return <Todo key={todo.id} {...todo} category_id={cat.category_id}/>
-                            })
-                            : ''
-                    }
-                    <AddTodo key={cat.items.length} category_id={cat.category_id}/>
-                </ul>
-                <FontAwesomeIcon icon='ellipsis-h' size="lg"  />
+            <div className='todo_list'>
+                {todosCategories}
+                <AddTodoList/>
             </div>
-        )
-    })
-    return (
-        <div className='todo_list'>
-            {todosCategories}
-            <AddTodoList/>
-        </div>
 
-    );
+        );
+    }
+
 };
 
 TodoList.propTypes = {

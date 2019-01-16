@@ -1,36 +1,33 @@
 import React, {Component} from 'react';
+import {editCategoryTitle, removeCategory} from "../actions";
 import {connect} from 'react-redux';
-import {editTodo, removeTodo} from "../actions";
 
-class EditTodo extends Component {
-    constructor(props){
+class EditListTitle extends Component {
+    constructor(props) {
         super(props);
-
         this.state = {
-            text: this.props.text
+            title: this.props.title
         }
     }
-
     onSaveClick = () => {
-        const {id, category_id, dispatch} = this.props;
-        dispatch(editTodo(id, this.state.text, category_id));
+        const {category_id, dispatch} = this.props;
+        dispatch(editCategoryTitle(category_id, this.state.title));
         this.props.afterSave();
     }
 
     onRemoveClick = () => {
-        const {id, category_id, dispatch} = this.props;
-        dispatch(removeTodo(id, category_id));
+        const {category_id, dispatch} = this.props;
+        dispatch(removeCategory(category_id));
         this.props.afterSave();
     }
     onInputChange = (e) => {
-        this.setState({text: e.target.value})
+        this.setState({title: e.target.value})
     }
     render() {
-        let {text} = this.state;
-
+        let {title} = this.state;
         return (
             <>
-                <input type="text" value={text} onChange={this.onInputChange}/>
+                <input type="text" value={title} onChange={this.onInputChange}/>
                 <button type="button" className="btn green small" onClick={this.onSaveClick}>Save</button>
                 <button type="button" className="btn red small remove" onClick={this.onRemoveClick}>Remove</button>
             </>
@@ -38,4 +35,4 @@ class EditTodo extends Component {
     }
 }
 
-export default connect()(EditTodo);
+export default connect()(EditListTitle);

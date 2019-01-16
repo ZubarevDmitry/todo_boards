@@ -5,19 +5,19 @@ export function addTodo(text, category_id) {
 };
 
 export function editTodo(id, text, category_id) {
-    return {type: EDIT_TODO, id, text}
+    return {type: EDIT_TODO, id, text, category_id}
 }
 
-export function removeTodo(id) {
-    return {type: REMOVE_TODO, id}
+export function removeTodo(id, category_id) {
+    return {type: REMOVE_TODO, id, category_id}
 };
 
 export function addCategory(title) {
     return {type: ADD_CATEGORY, title }
 }
 
-export function editCategoryTitle(id) {
-    return {type: EDIT_CATEGORY_TITLE, id}
+export function editCategoryTitle(id, title) {
+    return {type: EDIT_CATEGORY_TITLE, id, title}
 }
 
 export function removeCategory(id) {

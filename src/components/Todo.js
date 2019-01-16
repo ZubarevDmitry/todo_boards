@@ -20,13 +20,13 @@ class Todo extends React.Component{
 
         return (
             <li className={'todo_list-item' + (edit_view ? ' expanded' : '')}>
-                <p>{!edit_view && text || edit_view && <EditTodo id={id} text={text} category_id={category_id} afterSave={this.onEditClick}/>}</p>
+                <p>{(!edit_view && text) || (edit_view && <EditTodo id={id} text={text} category_id={category_id} afterSave={this.onEditClick}/>)}</p>
                 <FontAwesomeIcon icon='edit' onClick={this.onEditClick}  />
             </li>
         );
     }
 
-};
+}
 
 Todo.propTypes = {
     text: propTypes.string.isRequired

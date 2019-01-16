@@ -24,6 +24,4 @@ let AddTodo = ({key, category_id, dispatch}) => {
   );
 };
 
-AddTodo = connect()(AddTodo);
-
-export default AddTodo;
+export default connect()(AddTodo);

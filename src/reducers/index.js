@@ -1,4 +1,11 @@
-import {ADD_CATEGORY, ADD_TODO, EDIT_TODO, REMOVE_CATEGORY, REMOVE_TODO} from "../actions/actionTypes";
+import {
+    ADD_CATEGORY,
+    ADD_TODO,
+    EDIT_TODO,
+    REMOVE_CATEGORY,
+    REMOVE_TODO,
+    EDIT_CATEGORY_TITLE
+} from "../actions/actionTypes";
 import uuid from 'uuid';
 
 function todoReducer(state = [], action) {
@@ -16,10 +23,11 @@ function todoReducer(state = [], action) {
                 return cat;
             })
             return {...state, todos: [...newTodos]};
+
         case EDIT_TODO:
             let newEditTodos = [...state.todos];
             newEditTodos.filter(cat => {
-                if (cat.id === action.category_id){
+                if (cat.category_id === action.category_id){
                     cat.items.filter(todo => {
                         if(todo.id === action.id){
                             todo.text = action.text;
@@ -31,12 +39,28 @@ function todoReducer(state = [], action) {
                 }
                 return cat;
             })
-
             return {...state, todos: [...newEditTodos]};
-        case
-        REMOVE_TODO:
-            let filteredTodos = state.filter(t => t.id !== action.id);
-            return {...filteredTodos};
+
+        case REMOVE_TODO:
+            let newRemoveTodos = [...state.todos];
+            newRemoveTodos.filter(cat => {
+                if (cat.category_id === action.category_id){
+                    let index = -1;
+                    cat.items.forEach((todo, i) => {
+                        if(todo.id === action.id){
+                            index = i;
+                        }
+                    });
+
+                    if(index > -1){
+                        cat.items.splice(index, 1);
+                    }
+                    return cat;
+                }
+                return cat;
+            })
+            return {...state, todos: [...newRemoveTodos]};
+
         case ADD_CATEGORY:
             return {
                 ...state,
@@ -49,8 +73,26 @@ function todoReducer(state = [], action) {
                     }
                     ]
             };
+
         case REMOVE_CATEGORY:
-            return state
+            let newRemoveList = [...state.todos];
+            newRemoveList.forEach((cat, index) => {
+                if(cat.category_id === action.id){
+                    newRemoveList.splice(index, 1);
+                }
+            })
+            return {...state, todos: [...newRemoveList]};
+        case EDIT_CATEGORY_TITLE:
+            let newEditList = [...state.todos];
+            newEditList.filter(cat => {
+                if (cat.category_id === action.id){
+                    cat.title = action.title;
+                    return cat;
+                }
+                return cat;
+            })
+            return {...state, todos: [...newEditList]};
+
         default:
             return state;
     }
